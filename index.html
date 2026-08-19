@@ -1,72 +1,101 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>OneJabalpur — Where you'll find all related information</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="Assets/MainBackgroundImage.jpg">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>One Jabalpur — Local news, events, places & businesses in Jabalpur</title>
+    <meta name="description"
+        content="Find local news, events, places to visit, restaurants, and business listings for Jabalpur. Up-to-date guides, maps, and community resources on One Jabalpur." />
+    <link rel="canonical" href="https://onejabalpur.com/" />
+    <meta property="og:title" content="One Jabalpur — Local news, events & places in Jabalpur" />
+    <meta property="og:description"
+        content="Find local events, top places to visit, restaurants, and trusted business listings for Jabalpur on One Jabalpur." />
+    <meta property="og:image" content="/Assets/MainBackgroundImage.jpg" />
+    <meta property="og:url" content="https://onejabalpur.com/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="Assets/MainBackgroundImage.jpg">
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "One Jabalpur",
+    "url": "https://onejabalpur.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://onejabalpur.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="logo" href="#">OneJabalpur</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
-      <nav class="site-nav" id="siteNav">
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="#">OneJabalpur</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+            <nav class="site-nav" id="siteNav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <main>
-    <section class="hero">
-      <div class="overlay"></div>
-      <div class="hero-content container">
-        <h1>OneJabalpur</h1>
-        <p class="tagline">Where you'll find all related information.</p>
-        <a class="cta" href="#about">Learn more</a>
-      </div>
-    </section>
+    <main>
+        <section class="hero">
+            <div class="overlay"></div>
+            <!-- Accessible image for crawlers and assistive tech -->
+            <img class="sr-only" src="Assets/MainBackgroundImage.jpg"
+                alt="Aerial view of Jabalpur — One Jabalpur hero image" />
+            <div class="hero-content container">
+                <h1>OneJabalpur</h1>
+                <p class="tagline">Where you'll find all related information.</p>
+                <a class="cta" href="#about">Learn more</a>
+            </div>
+        </section>
 
-    <section id="about" class="container about">
-      <h2>About</h2>
-      <p>This site collects and shares information about Jabalpur: news, places, events, and local resources.</p>
-    </section>
+        <section id="about" class="container about">
+            <h2>About</h2>
+            <p>This site collects and shares information about Jabalpur: news, places, events, and local resources.</p>
+        </section>
 
-    <section id="features" class="container features">
-      <h2>What you'll find</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Local News</h3>
-          <p>Latest updates and important announcements for the city.</p>
-        </article>
-        <article class="card">
-          <h3>Places</h3>
-          <p>Recommendations for landmarks, parks, and eateries.</p>
-        </article>
-        <article class="card">
-          <h3>Events</h3>
-          <p>Upcoming events, fairs, and community meetups.</p>
-        </article>
-      </div>
-    </section>
+        <section id="features" class="container features">
+            <h2>What you'll find</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Local News</h3>
+                    <p>Latest updates and important announcements for the city.</p>
+                </article>
+                <article class="card">
+                    <h3>Places</h3>
+                    <p>Recommendations for landmarks, parks, and eateries.</p>
+                </article>
+                <article class="card">
+                    <h3>Events</h3>
+                    <p>Upcoming events, fairs, and community meetups.</p>
+                </article>
+            </div>
+        </section>
 
-    <section id="contact" class="container contact">
-      <h2>Contact</h2>
-      <p>Want to contribute or suggest content? Reach out and we'll add it.</p>
-    </section>
-  </main>
+        <section id="contact" class="container contact">
+            <h2>Contact</h2>
+            <p>Want to contribute or suggest content? Reach out and we'll add it.</p>
+        </section>
+    </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> OneJabalpur — All rights reserved.</p>
-    </div>
-  </footer>
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="year"></span> OneJabalpur — All rights reserved.</p>
+        </div>
+    </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
