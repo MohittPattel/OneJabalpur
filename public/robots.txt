@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block admin routes when they are built
+# Disallow: /admin
+
+Sitemap: https://onejabalpur.com/sitemap.xml
