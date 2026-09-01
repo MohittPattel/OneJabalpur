@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ComingSoon from "@/components/ComingSoon";
 import styles from "@/app/page.module.css";
 
 export const metadata: Metadata = {
@@ -13,14 +14,18 @@ export default function CreatorsPage() {
     <div className={styles.page}>
       <Header />
       <section className={styles.pageHero}>
-        <h1>Creators</h1>
-        <p>Meet local content creators, artists, and influencers from Jabalpur.</p>
+        <div className={styles.container}>
+          <div className={styles.eyebrow}>LOCAL TALENT</div>
+          <h1>Jabalpur Creators</h1>
+          <p>Meet local content creators, artists, and influencers from Jabalpur.</p>
+        </div>
       </section>
       <main className={styles.pageContent}>
-        <div className={styles.emptyState}>
-          <h2>Coming Soon</h2>
-          <p>Creator profiles will appear here.</p>
-        </div>
+        <ComingSoon
+          icon="🎨"
+          title="Creator Profiles Coming Soon"
+          message="Discover talented content creators, artists, photographers, and influencers from Jabalpur. Support local talent!"
+        />
       </main>
       <Footer />
     </div>
