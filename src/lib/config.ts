@@ -22,7 +22,27 @@ export const siteConfig = {
   },
 
   nav: [
-    { label: "Places", href: "/places" },
+    {
+      label: "Places",
+      href: "/places",
+      children: [
+        { label: "⭐ Must Visit", href: "/places/category/must-visit" },
+        { label: "🏙️ Jabalpur City", href: "/places/category/heritage" },
+        { label: "🌊 Nature & Waterfalls", href: "/places/category/nature" },
+        { label: "🛕 Temples & Spiritual", href: "/places/category/temples" },
+        { label: "🌳 Parks & Nature", href: "/places/category/parks" },
+        {
+          label: "🚗 Near Jabalpur",
+          href: "/places/category/nearby",
+          children: [
+            { label: "🦁 Kanha National Park", href: "/places/kanha-national-park" },
+            { label: "🐯 Bandhavgarh", href: "/places/bandhavgarh-national-park" },
+            { label: "🌳 Pench", href: "/places/pench-national-park" },
+            { label: "⛰️ Pachmarhi", href: "/places/pachmarhi" },
+          ],
+        },
+      ],
+    },
     { label: "Events", href: "/events" },
     { label: "Food & Cafes", href: "/food" },
     { label: "Businesses", href: "/businesses" },

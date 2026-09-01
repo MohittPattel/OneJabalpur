@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ComingSoon from "@/components/ComingSoon";
 import { buildMetadata } from "@/lib/metadata";
 import styles from "@/app/page.module.css";
 
@@ -15,14 +16,18 @@ export default function BusinessesPage() {
     <div className={styles.page}>
       <Header />
       <section className={styles.pageHero}>
-        <h1>Businesses in Jabalpur</h1>
-        <p>Hotels, gyms, salons, shops and local services across Jabalpur.</p>
+        <div className={styles.container}>
+          <div className={styles.eyebrow}>LOCAL BUSINESSES</div>
+          <h1>Businesses in Jabalpur</h1>
+          <p>Hotels, gyms, salons, shops and local services across Jabalpur.</p>
+        </div>
       </section>
       <main className={styles.pageContent}>
-        <div className={styles.emptyState}>
-          <h2>Coming Soon</h2>
-          <p>We&apos;re building the Jabalpur business directory.</p>
-        </div>
+        <ComingSoon
+          icon="🏪"
+          title="Business Directory Coming Soon"
+          message="We're building the ultimate Jabalpur business directory. Find hotels, gyms, salons, shops and local services — all in one place."
+        />
       </main>
       <Footer />
     </div>

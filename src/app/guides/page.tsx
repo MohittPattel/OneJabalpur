@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ComingSoon from "@/components/ComingSoon";
 import { buildMetadata } from "@/lib/metadata";
 import styles from "@/app/page.module.css";
 
@@ -15,15 +16,19 @@ export default function GuidesPage() {
     <div className={styles.page}>
       <Header />
       <section className={styles.pageHero}>
-        <h1>Jabalpur Guides</h1>
-        <p>Local travel guides, food guides and insider knowledge about Jabalpur.</p>
-      </section>
-      <section className={styles.pageContent}>
-        <div className={styles.emptyState}>
-          <h2>Coming Soon</h2>
-          <p>Our local guides are being written. Check back soon.</p>
+        <div className={styles.container}>
+          <div className={styles.eyebrow}>LOCAL KNOWLEDGE</div>
+          <h1>Jabalpur Guides</h1>
+          <p>Local travel guides, food guides and insider knowledge about Jabalpur.</p>
         </div>
       </section>
+      <main className={styles.pageContent}>
+        <ComingSoon
+          icon="📚"
+          title="Local Guides Coming Soon"
+          message="In-depth travel guides, food trails, weekend itineraries and insider tips about Jabalpur — written by locals, for everyone."
+        />
+      </main>
       <Footer />
     </div>
   );

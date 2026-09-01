@@ -1,56 +1,199 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { buildMetadata } from "@/lib/metadata";
-import styles from "@/app/page.module.css";
+import {
+  places,
+  placeCategories,
+  getMustVisitPlaces,
+  getNearbyDestinations,
+} from "@/lib/places-data";
+import styles from "./places.module.css";
 
 export const metadata: Metadata = buildMetadata({
   title: "Places to Visit in Jabalpur",
   description:
-    "Explore the best places to visit in Jabalpur — Dhuandhar Falls, Marble Rocks, Madan Mahal Fort, Bargi Dam and more tourist attractions in Jabalpur, MP.",
+    "Explore the best places to visit in Jabalpur — Dhuandhar Falls, Marble Rocks, Madan Mahal Fort, Bargi Dam, temples, ghats and more attractions in Jabalpur, MP.",
 });
 
-const places = [
-  { title: "Dhuandhar Falls",  badge: "Nature",   desc: "One of Jabalpur's most famous natural attractions.",          meta: "📍 Bhedaghat · ⭐ Popular",    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" },
-  { title: "Marble Rocks",     badge: "Nature",   desc: "Scenic marble cliffs along the Narmada River.",              meta: "📍 Bhedaghat · 🛶 Boating",    image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80" },
-  { title: "Dumna Nature Park", badge: "Nature",  desc: "A green escape for walks and outdoor time.",                meta: "📍 Jabalpur · 🌿 Outdoors",   image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80" },
-  { title: "Madan Mahal Fort", badge: "Heritage", desc: "A historic landmark with panoramic city views.",            meta: "📍 Jabalpur · 🏛 Heritage",   image: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=80" },
-  { title: "Gwarighat",        badge: "Spiritual",desc: "Sacred ghats on the Narmada, ideal for sunrise visits.",   meta: "📍 Jabalpur · 🌅 Sunrise",   image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80" },
-  { title: "Bargi Dam",        badge: "Nature",   desc: "A scenic reservoir and picnic destination near Jabalpur.",  meta: "📍 Jabalpur · 🏞️ Scenic",   image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=900&q=80" },
-];
-
 export default function PlacesPage() {
+  const mustVisit = getMustVisitPlaces();
+  const featured = places.filter((p) => p.isFeatured).slice(0, 3);
+  const nearby = getNearbyDestinations();
+  const allPlaces = places.filter((p) => !p.category.includes("nearby"));
+
   return (
-    <>
+    <div className={styles.placesPage}>
       <Header />
-      <section className={styles.pageHero}>
-        <div className={styles.container}>
-          <div className={styles.eyebrow}>EXPLORE JABALPUR</div>
+
+      {/* Hero Section */}
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <div className={styles.eyebrow}>Explore Jabalpur</div>
           <h1>Places to Visit in Jabalpur</h1>
-          <p>Discover waterfalls, heritage, nature, viewpoints and memorable places across Jabalpur and nearby areas.</p>
+          <p>
+            Discover waterfalls, heritage sites, temples, nature reserves and
+            memorable destinations across Jabalpur and nearby Central India.
+          </p>
         </div>
       </section>
-      <main className={styles.pageContent}>
-        <div className={styles.filters}>
-          {["All", "Popular", "Nature", "Heritage", "Weekend"].map((f) => (
-            <span key={f} className={`${styles.filter}${f === "All" ? " " + styles.active : ""}`}>{f}</span>
+
+      {/* Category Navigation */}
+      <div className={styles.categories}>
+        <div className={styles.categoriesInner}>
+          <Link href="/places" className={`${styles.categoryBtn} ${styles.active}`}>
+            <span className={styles.categoryIcon}>🗺️</span>
+            All Places
+          </Link>
+          {placeCategories.map((cat) => (
+            <Link
+              key={cat.id}
+              href={`/places/category/${cat.id}`}
+              className={styles.categoryBtn}
+            >
+              <span className={styles.categoryIcon}>{cat.icon}</span>
+              {cat.label}
+            </Link>
           ))}
         </div>
-        <div className={styles.cards}>
-          {places.map((p) => (
-            <article key={p.title} className={styles.card}>
-              <img src={p.image} alt={p.title} className={styles.cardImage} loading="lazy" />
-              <div className={styles.cardBody}>
-                <span className={styles.badge}>{p.badge}</span>
-                <h3>{p.title}</h3>
-                <p>{p.desc}</p>
-                <div className={styles.meta}>{p.meta}</div>
-              </div>
-            </article>
-          ))}
-        </div>
+      </div>
+
+      <main className={styles.main}>
+        {/* Featured Section */}
+        <section className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>
+              <span className={styles.sectionIcon}>⭐</span>
+              Must Visit in Jabalpur
+            </h2>
+          </div>
+          <div className={styles.featuredGrid}>
+            {featured[0] && (
+              <Link
+                href={`/places/${featured[0].slug}`}
+                className={`${styles.featuredCard} ${styles.large}`}
+              >
+                <img
+                  src={featured[0].image}
+                  alt={featured[0].title}
+                  className={styles.featuredImage}
+                />
+                <div className={styles.featuredOverlay} />
+                <div className={styles.featuredContent}>
+                  <span className={styles.featuredBadge}>
+                    ⭐ Must Visit
+                  </span>
+                  <h3>{featured[0].title}</h3>
+                  <p>{featured[0].shortDesc}</p>
+                </div>
+              </Link>
+            )}
+            <div>
+              {featured.slice(1, 3).map((place) => (
+                <Link
+                  key={place.slug}
+                  href={`/places/${place.slug}`}
+                  className={styles.featuredCard}
+                  style={{ marginBottom: featured.indexOf(place) === 1 ? "20px" : 0 }}
+                >
+                  <img
+                    src={place.image}
+                    alt={place.title}
+                    className={styles.featuredImage}
+                  />
+                  <div className={styles.featuredOverlay} />
+                  <div className={styles.featuredContent}>
+                    <span className={styles.featuredBadge}>
+                      {place.category[0] === "must-visit" ? "⭐ Must Visit" : place.tags[0]}
+                    </span>
+                    <h3>{place.title}</h3>
+                    <p>{place.shortDesc}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* All Places Grid */}
+        <section className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>
+              <span className={styles.sectionIcon}>📍</span>
+              All Places in Jabalpur
+            </h2>
+          </div>
+          <div className={styles.grid}>
+            {allPlaces.map((place) => (
+              <Link
+                key={place.slug}
+                href={`/places/${place.slug}`}
+                className={styles.card}
+              >
+                <div className={styles.cardImageWrap}>
+                  <img
+                    src={place.image}
+                    alt={place.title}
+                    className={styles.cardImage}
+                    loading="lazy"
+                  />
+                  {place.isMustVisit && (
+                    <span className={`${styles.cardBadge} ${styles.mustVisitBadge}`}>
+                      ⭐ Must Visit
+                    </span>
+                  )}
+                </div>
+                <div className={styles.cardBody}>
+                  <h3>{place.title}</h3>
+                  <p>{place.shortDesc}</p>
+                  <div className={styles.cardMeta}>
+                    <span>📍 {place.location.split(",")[0]}</span>
+                    {place.bestTime && <span>🗓️ {place.bestTime.split(" ")[0]}</span>}
+                  </div>
+                  <div className={styles.cardTags}>
+                    {place.tags.slice(0, 3).map((tag) => (
+                      <span key={tag} className={styles.tag}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Nearby Destinations */}
+        <section className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <h2 className={styles.sectionTitle}>
+              <span className={styles.sectionIcon}>🚗</span>
+              Explore Near Jabalpur
+            </h2>
+          </div>
+          <div className={styles.nearbyGrid}>
+            {nearby.map((place) => (
+              <Link
+                key={place.slug}
+                href={`/places/${place.slug}`}
+                className={styles.nearbyCard}
+              >
+                <div className={styles.nearbyIcon}>
+                  {place.category.includes("wildlife") ? "🦁" : "🏔️"}
+                </div>
+                <h3>{place.title}</h3>
+                <p>{place.shortDesc}</p>
+                <div className={styles.nearbyDistance}>
+                  📍 {place.location.split(",")[1]?.trim() || place.location}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
       </main>
+
       <Footer />
-    </>
+    </div>
   );
 }
