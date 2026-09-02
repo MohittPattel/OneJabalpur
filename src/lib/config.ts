@@ -1,4 +1,43 @@
-export const siteConfig = {
+type NavChild = {
+  label: string;
+  href: string;
+  children?: NavChild[];
+};
+
+type NavItem = {
+  label: string;
+  href: string;
+  children?: NavChild[];
+};
+
+export const siteConfig: {
+  name: string;
+  brandName: string;
+  tagline: string;
+  url: string;
+  seo: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
+  nav: NavItem[];
+  sections: Array<{ title: string; desc: string; icon: string; href: string }>;
+  featuredPlaces: Array<{
+    title: string;
+    desc: string;
+    badge: string;
+    image: string;
+    meta: string;
+    href: string;
+  }>;
+  stats: Array<{ value: string; label: string }>;
+  images: { heroBg: string };
+  footer: {
+    explore: Array<{ label: string; href: string }>;
+    local: Array<{ label: string; href: string }>;
+    about: Array<{ label: string; href: string }>;
+  };
+} = {
   name: "One Jabalpur",
   brandName: "OneJabalpur",
   tagline: "Discover Everything Jabalpur",
@@ -112,4 +151,4 @@ export const siteConfig = {
       { label: "List your business",  href: "#" },
     ],
   },
-} as const;
+};
