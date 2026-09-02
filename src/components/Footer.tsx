@@ -14,19 +14,19 @@ export default function Footer() {
           <div>
             <h3>Explore</h3>
             {siteConfig.footer.explore.map((item) => (
-              <Link key={item.href} href={item.href}>{item.label}</Link>
+              <Link key={item.label} href={item.href}>{item.label}</Link>
             ))}
           </div>
           <div>
             <h3>Local</h3>
             {siteConfig.footer.local.map((item) => (
-              <Link key={item.href} href={item.href}>{item.label}</Link>
+              <Link key={item.label} href={item.href}>{item.label}</Link>
             ))}
           </div>
           <div>
             <h3>One Jabalpur</h3>
             {siteConfig.footer.about.map((item) => (
-              <Link key={item.href} href={item.href}>{item.label}</Link>
+              <Link key={item.label} href={item.href}>{item.label}</Link>
             ))}
           </div>
         </div>

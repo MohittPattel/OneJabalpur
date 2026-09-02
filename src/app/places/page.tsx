@@ -12,6 +12,7 @@ import {
 import styles from "./places.module.css";
 
 export const metadata: Metadata = buildMetadata({
+  path: "/places",
   title: "Places to Visit in Jabalpur",
   description:
     "Explore the best places to visit in Jabalpur — Dhuandhar Falls, Marble Rocks, Madan Mahal Fort, Bargi Dam, temples, ghats and more attractions in Jabalpur, MP.",

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { buildMetadata } from "@/lib/metadata";
 import { places, getPlaceBySlug, getPlacesByCategory } from "@/lib/places-data";
 import styles from "./place.module.css";
 
@@ -21,18 +22,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const place = getPlaceBySlug(slug);
 
   if (!place) {
-    return { title: "Place Not Found" };
+    return buildMetadata({
+      path: `/places/${slug}`,
+      title: "Place Not Found",
+      robots: { index: false, follow: true },
+    });
   }
 
-  return {
-    title: `${place.title} - Places to Visit in Jabalpur | OneJabalpur`,
+  return buildMetadata({
+    path: `/places/${place.slug}`,
+    title: `${place.title} - Places to Visit in Jabalpur`,
     description: place.description,
-    openGraph: {
-      title: place.title,
-      description: place.shortDesc,
-      images: [place.image],
-    },
-  };
+    openGraph: { images: [place.image] },
+  });
 }
 
 export default async function PlacePage({ params }: PageProps) {

@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ComingSoon from "@/components/ComingSoon";
+import { buildMetadata } from "@/lib/metadata";
 import styles from "@/app/page.module.css";
 
-export const metadata: Metadata = {
-  title: "Cities – OneJabalpur",
+export const metadata: Metadata = buildMetadata({
+  path: "/cities",
+  title: "Cities",
   description: "Explore cities and neighbourhoods across Jabalpur.",
-};
+  // Coming Soon placeholder — unindex until real content ships (SEO doc §21).
+  robots: { index: false, follow: true },
+});
 
 export default function CitiesPage() {
   return (

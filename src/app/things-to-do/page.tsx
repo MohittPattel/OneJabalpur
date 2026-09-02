@@ -6,9 +6,12 @@ import { buildMetadata } from "@/lib/metadata";
 import styles from "@/app/page.module.css";
 
 export const metadata: Metadata = buildMetadata({
+  path: "/things-to-do",
   title: "Things To Do in Jabalpur",
   description:
     "Discover the best things to do in Jabalpur — activities, adventures, experiences and places to hang out in Jabalpur, Madhya Pradesh.",
+  // Coming Soon placeholder — unindex until real content ships (SEO doc §21).
+  robots: { index: false, follow: true },
 });
 
 export default function ThingsToDoPage() {

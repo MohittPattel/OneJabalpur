@@ -5,6 +5,7 @@ import { buildMetadata } from "@/lib/metadata";
 import styles from "@/app/page.module.css";
 
 export const metadata: Metadata = buildMetadata({
+  path: "/food",
   title: "Best Restaurants & Cafes in Jabalpur",
   description:
     "Discover the best restaurants, cafes and street food in Jabalpur. Find where to eat, drink and enjoy local cuisine in Jabalpur, Madhya Pradesh.",

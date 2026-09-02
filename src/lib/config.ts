@@ -1,3 +1,8 @@
+import { eventCategories } from "./events-data";
+import { foodCategories } from "./food-data";
+import { businessCategories } from "./business-data";
+import { guideCategories } from "./guides-data";
+
 type NavChild = {
   label: string;
   href: string;
@@ -65,26 +70,60 @@ export const siteConfig: {
       label: "Places",
       href: "/places",
       children: [
-        { label: "⭐ Must Visit", href: "/places/category/must-visit" },
-        { label: "🏙️ Jabalpur City", href: "/places/category/heritage" },
-        { label: "🌊 Nature & Waterfalls", href: "/places/category/nature" },
-        { label: "🛕 Temples & Spiritual", href: "/places/category/temples" },
-        { label: "🌳 Parks & Nature", href: "/places/category/parks" },
+        { label: "Must Visit", href: "/places/category/must-visit" },
+        { label: "Jabalpur City", href: "/places/category/heritage" },
+        { label: "Nature & Waterfalls", href: "/places/category/nature" },
+        { label: "Temples & Spiritual", href: "/places/category/temples" },
+        { label: "Parks & Nature", href: "/places/category/parks" },
         {
-          label: "🚗 Near Jabalpur",
+          label: "Near Jabalpur",
           href: "/places/category/nearby",
           children: [
-            { label: "🦁 Kanha National Park", href: "/places/kanha-national-park" },
-            { label: "🐯 Bandhavgarh", href: "/places/bandhavgarh-national-park" },
-            { label: "🌳 Pench", href: "/places/pench-national-park" },
-            { label: "⛰️ Pachmarhi", href: "/places/pachmarhi" },
+            { label: "Kanha National Park", href: "/places/kanha-national-park" },
+            { label: "Bandhavgarh", href: "/places/bandhavgarh-national-park" },
+            { label: "Pench", href: "/places/pench-national-park" },
+            { label: "Pachmarhi", href: "/places/pachmarhi" },
           ],
         },
       ],
     },
-    { label: "Events", href: "/events" },
-    { label: "Food & Cafes", href: "/food" },
-    { label: "Businesses", href: "/businesses" },
+    {
+      label: "Events",
+      href: "/events",
+      children: eventCategories.map((cat) => ({
+        label: cat.label,
+        href: `/events/${cat.id}`,
+      })),
+    },
+    {
+      label: "Food & Cafes",
+      href: "/food",
+      children: foodCategories.map((cat) => ({
+        label: cat.label,
+        href: `/food/${cat.id}`,
+      })),
+    },
+    {
+      label: "Businesses",
+      href: "/businesses",
+      children: businessCategories.map((cat) => ({
+        label: cat.label,
+        href: `/businesses/${cat.id}`,
+      })),
+    },
+    {
+      label: "Guides",
+      href: "/guides",
+      children: [
+        ...guideCategories
+          .slice(0, 2)
+          .map((cat) => ({ label: cat.label, href: `/guides/${cat.id}` })),
+        { label: "Things To Do", href: "/things-to-do" },
+        ...guideCategories
+          .slice(2)
+          .map((cat) => ({ label: cat.label, href: `/guides/${cat.id}` })),
+      ],
+    },
   ],
 
   sections: [
