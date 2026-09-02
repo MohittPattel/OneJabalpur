@@ -6,9 +6,12 @@ import { buildMetadata } from "@/lib/metadata";
 import styles from "@/app/page.module.css";
 
 export const metadata: Metadata = buildMetadata({
+  path: "/guides",
   title: "Jabalpur Travel Guides",
   description:
     "Read local guides about Jabalpur — travel tips, food guides, event guides and insider knowledge about life in Jabalpur, Madhya Pradesh.",
+  // Coming Soon placeholder — unindex until real content ships (SEO doc §21).
+  robots: { index: false, follow: true },
 });
 
 export default function GuidesPage() {

@@ -6,9 +6,12 @@ import { buildMetadata } from "@/lib/metadata";
 import styles from "@/app/page.module.css";
 
 export const metadata: Metadata = buildMetadata({
+  path: "/businesses",
   title: "Jabalpur Business Directory",
   description:
     "Find local businesses, hotels, gyms, salons, shops and services in Jabalpur. Your complete Jabalpur business directory.",
+  // Coming Soon placeholder — unindex until the directory has real listings (SEO doc §21).
+  robots: { index: false, follow: true },
 });
 
 export default function BusinessesPage() {

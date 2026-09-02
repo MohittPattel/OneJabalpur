@@ -5,6 +5,7 @@ import { buildMetadata } from "@/lib/metadata";
 import styles from "@/app/page.module.css";
 
 export const metadata: Metadata = buildMetadata({
+  path: "/events",
   title: "Events in Jabalpur",
   description:
     "Find upcoming events in Jabalpur — concerts, festivals, workshops, comedy shows, family events and more happening near you.",

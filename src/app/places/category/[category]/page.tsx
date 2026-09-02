@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { buildMetadata } from "@/lib/metadata";
 import { placeCategories, getPlacesByCategory } from "@/lib/places-data";
 import styles from "../../places.module.css";
 
@@ -21,13 +22,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const cat = placeCategories.find((c) => c.id === category);
 
   if (!cat) {
-    return { title: "Category Not Found" };
+    return buildMetadata({
+      path: `/places/category/${category}`,
+      title: "Category Not Found",
+      robots: { index: false, follow: true },
+    });
   }
 
-  return {
-    title: `${cat.label} - Places to Visit in Jabalpur | OneJabalpur`,
+  return buildMetadata({
+    path: `/places/category/${cat.id}`,
+    title: `${cat.label} - Places to Visit in Jabalpur`,
     description: `Explore ${cat.label.toLowerCase()} in and around Jabalpur. Discover the best destinations for your trip.`,
-  };
+  });
 }
 
 export default async function CategoryPage({ params }: PageProps) {
