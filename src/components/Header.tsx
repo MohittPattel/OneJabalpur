@@ -2,17 +2,17 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/config";
 import styles from "./Header.module.css";
 
-interface NavChild {
+type NavChild = {
   label: string;
   href: string;
   children?: NavChild[];
-}
+};
 
-interface NavItem {
+type NavItem = {
   label: string;
   href: string;
   children?: NavChild[];
-}
+};
 
 export default function Header() {
   return (
