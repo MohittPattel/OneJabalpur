@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/config";
+import { publishedFoodCategoryIds } from "@/lib/food-data";
 import { places, placeCategories } from "@/lib/places-data";
 
 // sitemap.xml compiles to a Route Handler, which `output: "export"` only
@@ -20,10 +21,10 @@ export const dynamic = "force-static";
  * page's content meaningfully changes.
  */
 const routes = [
-  { path: "",        lastModified: "2026-09-01", changeFrequency: "daily",  priority: 1.0 },
+  { path: "",        lastModified: "2026-09-06", changeFrequency: "daily",  priority: 1.0 },
   { path: "/places", lastModified: "2026-09-01", changeFrequency: "weekly", priority: 0.9 },
   { path: "/events", lastModified: "2026-09-01", changeFrequency: "daily",  priority: 0.9 },
-  { path: "/food",   lastModified: "2026-09-01", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/food",   lastModified: "2026-09-06", changeFrequency: "weekly", priority: 0.9 },
 ] as const satisfies ReadonlyArray<{
   path: string;
   lastModified: string;
@@ -54,5 +55,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...placeRoutes, ...categoryRoutes];
+  const foodRoutes = publishedFoodCategoryIds.map((category) => ({
+    url: `${siteConfig.url}/food/${category}`,
+    lastModified: "2026-09-06",
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...placeRoutes, ...categoryRoutes, ...foodRoutes];
 }

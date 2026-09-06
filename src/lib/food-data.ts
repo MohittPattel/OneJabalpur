@@ -1,4 +1,4 @@
-// Food & Cafes categories for OneJabalpur navigation — content not yet published for these (Coming Soon).
+// Food & Cafes categories for OneJabalpur navigation.
 export interface FoodCategory {
   id: string;
   label: string;
@@ -13,6 +13,15 @@ export const foodCategories: FoodCategory[] = [
   { id: "sweets", label: "Sweets" },
   { id: "food-trails", label: "Food Trails" },
 ];
+
+export const publishedFoodCategoryIds = [
+  "restaurants",
+  "cafes",
+  "street-food",
+  "jabalpur-special",
+  "sweets",
+  "food-trails",
+] as const;
 
 export const restaurants = [
   { title: "Verandah Brew House Kitchen", badge: "Restaurant", desc: "Modern dining with a relaxed cafe-style experience.", meta: "⭐ 4.7 · Open · 📞 089599 89591", image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80" },
