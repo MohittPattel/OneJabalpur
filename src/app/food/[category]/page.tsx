@@ -4,10 +4,37 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ComingSoon from "@/components/ComingSoon";
 import { buildMetadata } from "@/lib/metadata";
-import { cafes, foodAreas, foodByMeal, foodCategories, jabalpurSpecials, jabalpurSweets, restaurants, streetFoodPlaces } from "@/lib/food-data";
+import { cafes, foodAreas, foodByMeal, foodCategories, jabalpurSpecials, jabalpurSweets, publishedFoodCategoryIds, restaurants, streetFoodPlaces } from "@/lib/food-data";
 import styles from "@/app/page.module.css";
 
 const restaurantSearchQuery = encodeURIComponent("restaurants in Jabalpur Madhya Pradesh");
+
+const foodCategoryMetadata: Record<string, { title: string; description: string }> = {
+  restaurants: {
+    title: "Best Restaurants in Jabalpur",
+    description: "Discover curated restaurants in Jabalpur for family meals, North Indian food, vegetarian dining and modern Indian cuisine.",
+  },
+  cafes: {
+    title: "Best Cafes in Jabalpur",
+    description: "Explore the best cafes in Jabalpur, including classic coffee houses, art cafes, bakery cafes and relaxed coffee spots.",
+  },
+  "street-food": {
+    title: "Street Food in Jabalpur",
+    description: "Explore Jabalpur street food, including Sarafa Bazaar, Civic Centre Chaupati, parathas, chaat and local food markets.",
+  },
+  "jabalpur-special": {
+    title: "Jabalpur Special Food",
+    description: "Discover signature Jabalpur food, from Khoya Jalebi and poha-jalebi to Dal Bafla, samosa, chaat and kulfi.",
+  },
+  sweets: {
+    title: "Jabalpur Sweets and Desserts",
+    description: "Discover Jabalpur sweets, including Khoya Jalebi, khoya barfi, peda, imarti, gulab jamun and traditional kulfi.",
+  },
+  "food-trails": {
+    title: "Jabalpur Food Trails by Area",
+    description: "Plan where to eat in Jabalpur with food trails through Sadar, Civic Centre, Wright Town, Napier Town, Sarafa and Garha Road.",
+  },
+};
 
 interface PageProps {
   params: Promise<{ category: string }>;
@@ -20,15 +47,14 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category } = await params;
   const cat = foodCategories.find((c) => c.id === category);
+  const categoryMetadata = foodCategoryMetadata[category];
+  const isPublished = publishedFoodCategoryIds.includes(category as typeof publishedFoodCategoryIds[number]);
 
   return buildMetadata({
     path: `/food/${category}`,
-    title: cat ? `${cat.label} in Jabalpur` : "Category Not Found",
-    description: cat
-      ? `${cat.label} in Jabalpur — coming soon.`
-      : undefined,
-    // Coming Soon placeholder — unindex until real content ships (SEO doc §21).
-    robots: { index: false, follow: true },
+    title: categoryMetadata?.title ?? (cat ? `${cat.label} in Jabalpur` : "Category Not Found"),
+    description: categoryMetadata?.description ?? (cat ? `${cat.label} in Jabalpur — coming soon.` : undefined),
+    robots: { index: isPublished, follow: true },
   });
 }
 
