@@ -1154,3 +1154,20 @@ When I ask a question about One Jabalpur, consider:
 - The need for original, useful, locally relevant content
 
 Do not optimize only for search engines. The primary objective is to create a genuinely useful platform for people in and around Jabalpur.
+
+
+                  ONE JABALPUR
+                       │
+          ┌────────────┴────────────┐
+          │                         │
+   Google Analytics 4       Google Search Console
+          │                         │
+   Who visits the site       How Google finds you
+          │                         │
+   Pages / sessions         Keywords / impressions
+   Countries / devices      Clicks / positions
+   Traffic sources          Indexing / SEO
+          │                         │
+          └────────────┬────────────┘
+                       │
+                SEO + Growth
