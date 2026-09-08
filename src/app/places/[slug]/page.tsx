@@ -40,6 +40,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function PlacePage({ params }: PageProps) {
   const { slug } = await params;
   const place = getPlaceBySlug(slug);
+  const photos = place?.photos ?? [];
 
   if (!place) {
     notFound();
@@ -105,20 +106,37 @@ export default async function PlacePage({ params }: PageProps) {
               </div>
             </section>
 
-            {/* Photo Placeholder */}
             <section className={styles.section}>
               <h2>Photos</h2>
               <div className={styles.photoGrid}>
-                <div className={styles.photoPlaceholder}>
-                  <img src={place.image} alt={place.title} />
-                </div>
-                <div className={styles.photoPlaceholder}>
-                  <div className={styles.comingSoon}>More photos coming soon</div>
-                </div>
-                <div className={styles.photoPlaceholder}>
-                  <div className={styles.comingSoon}>More photos coming soon</div>
-                </div>
+                {(photos.length > 0 ? photos : [place.image]).map((photo, index) => (
+                  <div key={photo} className={styles.photoPlaceholder}>
+                    <a
+                      href={photo}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Open ${place.title} photo ${index + 1}`}
+                    >
+                      <img src={photo} alt={`${place.title} photo ${index + 1}`} />
+                    </a>
+                  </div>
+                ))}
+                {Array.from({ length: Math.max(0, 3 - (photos.length || 1)) }).map((_, index) => (
+                  <div key={`placeholder-${index}`} className={styles.photoPlaceholder}>
+                    <div className={styles.comingSoon}>More photos coming soon</div>
+                  </div>
+                ))}
               </div>
+              {place.slug === "dhuandhar-falls" && (
+                <a
+                  href="https://www.google.com/search?q=Dhuandhar+Falls"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles.seeMore}
+                >
+                  See more
+                </a>
+              )}
             </section>
           </div>
 
@@ -177,13 +195,23 @@ export default async function PlacePage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Map Placeholder */}
             <div className={styles.mapCard}>
               <h3>Location</h3>
-              <div className={styles.mapPlaceholder}>
-                <span>🗺️</span>
-                <p>Map coming soon</p>
-              </div>
+              {place.slug === "dhuandhar-falls" ? (
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14676.809879185364!2d79.80754110000001!3d23.12627345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3981b41586923e59%3A0x647f072cfb1ee18e!2sDhuandhar%20Waterfall!5e0!3m2!1sen!2sin!4v1788878413534!5m2!1sen!2sin"
+                  className={styles.mapEmbed}
+                  title="Dhuandhar Waterfall location"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              ) : (
+                <div className={styles.mapPlaceholder}>
+                  <span>🗺️</span>
+                  <p>Map coming soon</p>
+                </div>
+              )}
             </div>
           </aside>
         </div>

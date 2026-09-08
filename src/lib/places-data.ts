@@ -1,6 +1,11 @@
 // Places data for OneJabalpur
 // Organized by categories as recommended
 
+import dhuandharMain from "@/assets/Images/dhuadhar_main.jpg";
+import dhuandharOne from "@/assets/Images/dhuadhar_1.jpg";
+import dhuandharTwo from "@/assets/Images/dhuadhar_2.jpg";
+import dhuandharThree from "@/assets/Images/dhuadhar_3.jpg";
+
 export interface Place {
   slug: string;
   title: string;
@@ -9,6 +14,7 @@ export interface Place {
   category: string[];
   tags: string[];
   image: string;
+  photos?: string[];
   location: string;
   highlights: string[];
   bestTime?: string;
@@ -54,7 +60,8 @@ export const places: Place[] = [
     description: "Where the Narmada river dramatically plunges through a narrow gorge, creating a permanent mist that gives the falls its name — 'Dhuandhar' means 'smoke cascade'. The thundering waters and spray can be experienced from multiple viewpoints, including a ropeway offering aerial views.",
     category: ["must-visit", "nature"],
     tags: ["Waterfall", "Narmada", "Ropeway", "Photography"],
-    image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+    image: dhuandharMain.src,
+    photos: [dhuandharOne.src, dhuandharTwo.src, dhuandharThree.src],
     location: "Bhedaghat, near Marble Rocks",
     highlights: ["Thundering waterfall views", "Ropeway ride", "Multiple viewpoints", "Sunset visits"],
     bestTime: "Monsoon (Jul-Sep) for full flow, Winter for pleasant weather",
