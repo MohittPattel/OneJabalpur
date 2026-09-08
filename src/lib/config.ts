@@ -150,7 +150,7 @@ export const siteConfig: {
       badge: "Nature",
       image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80",
       meta: "📍 Bhedaghat · 🧭 Experience",
-      href: "/places/marble-rocks",
+      href: "/places/bhedaghat",
     },
     {
       title: "Dumna Nature Park",
@@ -158,7 +158,7 @@ export const siteConfig: {
       badge: "Explore",
       image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80",
       meta: "📍 Jabalpur · 🌿 Nature",
-      href: "/places/dumna-nature-park",
+      href: "/places/dumna-nature-reserve",
     },
   ],
 
