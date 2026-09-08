@@ -2,6 +2,7 @@ import { eventCategories } from "./events-data";
 import { foodCategories } from "./food-data";
 import { businessCategories } from "./business-data";
 import { guideCategories } from "./guides-data";
+import dhuandharMain from "@/assets/Images/dhuadhar_main.jpg";
 
 type NavChild = {
   label: string;
@@ -140,7 +141,7 @@ export const siteConfig: {
       title: "Dhuandhar Falls",
       desc: "Experience one of Jabalpur's iconic natural attractions.",
       badge: "Must Visit",
-      image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
+      image: dhuandharMain.src,
       meta: "📍 Bhedaghat · ⭐ Popular",
       href: "/places/dhuandhar-falls",
     },
@@ -150,7 +151,7 @@ export const siteConfig: {
       badge: "Nature",
       image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80",
       meta: "📍 Bhedaghat · 🧭 Experience",
-      href: "/places/marble-rocks",
+      href: "/places/bhedaghat",
     },
     {
       title: "Dumna Nature Park",
@@ -158,7 +159,7 @@ export const siteConfig: {
       badge: "Explore",
       image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80",
       meta: "📍 Jabalpur · 🌿 Nature",
-      href: "/places/dumna-nature-park",
+      href: "/places/dumna-nature-reserve",
     },
   ],
 

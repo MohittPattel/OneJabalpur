@@ -1,0 +1,32 @@
+.section {
+  padding: 0 0 78px;
+}
+
+.container {
+  width: min(1180px, calc(100% - 40px));
+  margin: auto;
+}
+
+.card {
+  background: var(--color-navy);
+  color: #fff;
+  border-radius: 20px;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.label {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #BAE6FD;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.badge {
+  display: block;
+}
