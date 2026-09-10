@@ -5,6 +5,10 @@ import dhuandharMain from "@/assets/Images/dhuadhar_main.jpg";
 import dhuandharOne from "@/assets/Images/dhuadhar_1.jpg";
 import dhuandharTwo from "@/assets/Images/dhuadhar_2.jpg";
 import dhuandharThree from "@/assets/Images/dhuadhar_3.jpg";
+import gwarighatMain from "@/assets/Images/gwarighat_main.jpg";
+import gwarighatOne from "@/assets/Images/gwarighat_1.jpg";
+import gwarighatTwo from "@/assets/Images/gwarighat_2.jpg";
+import gwarighatThree from "@/assets/Images/gwarighat_3.jpg";
 
 export interface Place {
   slug: string;
@@ -137,7 +141,8 @@ export const places: Place[] = [
     description: "One of Jabalpur's most recognizable and spiritually significant locations on the Narmada. The evening Narmada Aarti ceremony draws devotees and visitors alike to witness the beautiful ritual of lights and prayers on the riverbank.",
     category: ["must-visit", "temples", "narmada"],
     tags: ["Ghat", "Narmada Aarti", "Spiritual", "Evening Ceremony"],
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=80",
+    image: gwarighatMain.src,
+    photos: [gwarighatOne.src, gwarighatTwo.src, gwarighatThree.src],
     location: "Gwarighat, Jabalpur City",
     highlights: ["Evening Narmada Aarti", "River bathing", "Sunrise views", "Spiritual atmosphere"],
     bestTime: "Evening for Aarti, Early morning for peace",

@@ -228,6 +228,10 @@ Create dedicated pages around distinct search intent.
 
 Every page MUST have one primary search intent.
 
+The keyword-focused paths used in the examples below are proposed future
+paths, not current routes. Do not link to or create them until a migration or
+alias plan is approved and the page creation rules in Section 9 are satisfied.
+
 Example:
 
 ## Page
@@ -292,31 +296,50 @@ Local discovery / Fresh information
 
 # 7. WEBSITE INFORMATION ARCHITECTURE
 
-Recommended structure:
+Current live structure:
 
 /
 
 ├── places/
 │
-├── places-to-visit-in-jabalpur/
+├── places/category/[category]/
 │
-├── things-to-do-in-jabalpur/
+├── places/[slug]/
 │
 ├── events/
 │
-├── cafes/
+├── events/[category]/
 │
-├── restaurants/
+├── food/
 │
-├── businesses/
+├── businesses/ (noindex until it has substantive listings)
 │
-├── shopping/
+├── food/[category]/
 │
-├── offers/
+├── about/ (indexable trust page)
 │
-├── guides/
+├── contact/ (indexable trust page)
 │
-└── about/
+├── guides/ (noindex until it has substantive content)
+│
+├── things-to-do/ (noindex until it has substantive content)
+│
+└── other planned sections (not live)
+
+Planned keyword-focused aliases or landing pages:
+
+- /places-to-visit-in-jabalpur/
+- /best-cafes-in-jabalpur/
+- /jabalpur-events/
+- /cafes/
+- /restaurants/
+- /shopping/
+- /offers/
+- /about/
+
+These planned paths must not be presented as live URLs until they resolve to
+an intentional page or redirect. Use the current routes in navigation and
+internal links until a migration plan is approved.
 
 Additional category pages can be added as the platform grows.
 
@@ -337,6 +360,11 @@ URLs should be:
 - Keyword relevant
 - Lowercase
 - Hyphen separated
+
+The GOOD examples below are proposed URL patterns, not a list of live routes.
+Before using one, check Section 7 and the current route tree. If an equivalent
+live route already exists, use that route or document an approved redirect;
+never publish two pages for the same search intent.
 
 GOOD:
 
@@ -655,6 +683,9 @@ Clearly distinguish:
 
 Content should be organized into topical clusters.
 
+The pillar paths below are planned keyword-focused destinations. Until they
+are implemented, link to the equivalent live routes documented in Section 7.
+
 ## Cluster 1 — Jabalpur Places
 
 Pillar:
@@ -958,6 +989,26 @@ Update the sitemap when new pages are added.
 
 For a Next.js implementation, use the framework's sitemap
 functionality where appropriate.
+
+Current implementation policy:
+
+- Indexable static routes: `/`, `/places`, `/events`, `/food`, `/about`, and
+      `/contact`.
+- Indexable place detail routes: `/places/[slug]` for entries in the places
+      data set.
+- Indexable place category routes: `/places/category/[category]` for defined
+      place categories.
+- Indexable published food category routes: `/food/[category]` only when the
+      category is marked as published.
+- Currently `noindex` and excluded from the sitemap: `/cities`, `/creators`,
+      `/reviews`, `/users`, `/businesses`, `/businesses/[category]`,
+      `/things-to-do`, `/guides`, `/guides/[category]`, and unpublished event or
+      food category routes.
+
+A route may be added to the sitemap only when its page is canonical, returns a
+successful response, is not `noindex`, contains useful non-thin content, and
+ has a stable URL. After adding it, update this list, add the route to the
+ sitemap, and inspect it in Google Search Console.
 
 ---
 
@@ -1619,6 +1670,37 @@ More listings/events/content
 More useful local information
       ↓
 More searches satisfied
+
+---
+
+# 49. SEO IMPLEMENTATION GATE
+
+Every SEO-affecting change must record:
+
+- Owner: person responsible for the change
+- Primary URL and search intent
+- Indexing decision: index or noindex, with reason
+- Canonical URL
+- Sitemap decision: included or excluded, with reason
+- Content verification source and review date
+
+Before merge, the owner must verify:
+
+- `npm.cmd run lint` passes
+- `npm.cmd run build` passes
+- The route returns a successful response
+- The page has one H1, a unique title, and a unique description
+- Canonical and Open Graph URLs point to the intended route
+- Internal links do not target a planned or missing URL
+- Images have useful ALT text and an approved source/license
+- Mobile layout and basic accessibility checks pass
+
+After release, the SEO owner must:
+
+- Confirm the route appears or remains absent from `/sitemap.xml` as intended
+- Inspect important new URLs in Google Search Console
+- Record indexing status, impressions, clicks, CTR, and average position
+- Review the page again after 30 days and update stale facts or dates
       ↓
 More organic visibility
       ↓

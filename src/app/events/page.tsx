@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { buildMetadata } from "@/lib/metadata";
@@ -11,16 +12,46 @@ export const metadata: Metadata = buildMetadata({
     "Find upcoming events in Jabalpur — concerts, festivals, workshops, comedy shows, family events and more happening near you.",
 });
 
-const events = [
-  { title: "Live Music Night",       badge: "Music",     desc: "An evening of live performances and good vibes.",                      meta: "📍 Jabalpur · 🕖 7:00 PM", image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80", day: "24", month: "AUG" },
-  { title: "Comedy Night Jabalpur",  badge: "Comedy",    desc: "A stand-up evening featuring local and visiting comedians.",           meta: "📍 City Venue · 🕖 8:00 PM", image: "https://images.unsplash.com/photo-1585699324551-f6c309eedeca?auto=format&fit=crop&w=900&q=80", day: "29", month: "AUG" },
-  { title: "Community Fest",         badge: "Community", desc: "Food, activities, music and experiences for the whole family.",         meta: "📍 Jabalpur · 👨\u200d👩\u200d👧 Family", image: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=900&q=80", day: "31", month: "AUG" },
-];
+type EventItem = {
+  title: string;
+  badge: string;
+  desc: string;
+  meta: string;
+  image: string;
+  day: string;
+  month: string;
+  startDate: string;
+  location: string;
+};
+
+// Only add verified future events with an official source and date.
+const events: EventItem[] = [];
+
+const eventJsonLd = events.map((event) => ({
+  "@context": "https://schema.org",
+  "@type": "Event",
+  name: event.title,
+  description: event.desc,
+  startDate: event.startDate,
+  image: event.image,
+  location: {
+    "@type": "Place",
+    name: event.location,
+    address: { "@type": "PostalAddress", addressLocality: "Jabalpur", addressRegion: "Madhya Pradesh", addressCountry: "IN" },
+  },
+}));
 
 export default function EventsPage() {
   return (
     <>
       <Header />
+      {eventJsonLd.length > 0 && (
+        <Script
+          id="events-json-ld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
+        />
+      )}
       <section className={styles.pageHero}>
         <div className={styles.container}>
           <div className={styles.eyebrow}>WHAT&apos;S HAPPENING</div>
@@ -34,8 +65,14 @@ export default function EventsPage() {
             <span key={f} className={`${styles.filter}${f === "All" ? " " + styles.active : ""}`}>{f}</span>
           ))}
         </div>
-        <div className={styles.cards}>
-          {events.map((e) => (
+        {events.length === 0 ? (
+          <div className={styles.emptyState}>
+            <h2>No upcoming events listed</h2>
+            <p>Check back soon for verified events happening in Jabalpur.</p>
+          </div>
+        ) : (
+          <div className={styles.cards}>
+            {events.map((e) => (
             <article key={e.title} className={styles.card}>
               <div className={styles.imageWrap}>
                 <img src={e.image} alt={e.title} className={styles.cardImage} loading="lazy" />
@@ -51,8 +88,9 @@ export default function EventsPage() {
                 <div className={styles.meta}>{e.meta}</div>
               </div>
             </article>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </main>
       <Footer />
     </>

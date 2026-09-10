@@ -52,8 +52,14 @@
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
-.searchBox input {
+.inputWrap {
+  position: relative;
   flex: 1;
+  min-width: 0;
+}
+
+.searchBox input {
+  width: 100%;
   border: 0;
   outline: 0;
   padding: 13px 16px;
@@ -61,6 +67,65 @@
   min-width: 0;
   color: var(--color-text);
   background: transparent;
+}
+
+.suggestions {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.18);
+  text-align: left;
+}
+
+.suggestion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.suggestion:hover,
+.suggestionActive {
+  background: #f0f9ff;
+}
+
+.suggestionIcon {
+  width: 24px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.suggestion span:not(.suggestionIcon) {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.suggestion strong,
+.suggestion small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.suggestion strong {
+  font-size: 0.92rem;
+}
+
+.suggestion small,
+.suggestion em {
+  color: #64748b;
+  font-size: 0.76rem;
+  font-style: normal;
 }
 
 .searchBtn {
@@ -88,6 +153,10 @@
 
   .searchBox {
     flex-direction: column;
+  }
+
+  .inputWrap {
+    width: 100%;
   }
 
   .searchBox input {

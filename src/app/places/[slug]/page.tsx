@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { buildMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/config";
 import { places, getPlaceBySlug, getPlacesByCategory } from "@/lib/places-data";
 import styles from "./place.module.css";
 
@@ -51,9 +53,23 @@ export default async function PlacePage({ params }: PageProps) {
     .filter((p) => p.slug !== place.slug)
     .slice(0, 3);
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Places", item: `${siteConfig.url}/places` },
+      { "@type": "ListItem", position: 2, name: place.title, item: `${siteConfig.url}/places/${place.slug}` },
+    ],
+  };
+
   return (
     <div className={styles.page}>
       <Header />
+      <Script
+        id={`breadcrumb-${place.slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
 
       {/* Hero Section */}
       <section className={styles.hero}>
@@ -137,6 +153,16 @@ export default async function PlacePage({ params }: PageProps) {
                   See more
                 </a>
               )}
+              {place.slug === "gwarighat" && (
+                <a
+                  href="https://www.google.com/search?q=Gwarighat+Jabalpur"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles.seeMore}
+                >
+                  See more
+                </a>
+              )}
             </section>
           </div>
 
@@ -202,6 +228,15 @@ export default async function PlacePage({ params }: PageProps) {
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14676.809879185364!2d79.80754110000001!3d23.12627345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3981b41586923e59%3A0x647f072cfb1ee18e!2sDhuandhar%20Waterfall!5e0!3m2!1sen!2sin!4v1788878413534!5m2!1sen!2sin"
                   className={styles.mapEmbed}
                   title="Dhuandhar Waterfall location"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+              ) : place.slug === "gwarighat" ? (
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14678.431277982007!2d79.92532904999999!3d23.111448099999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3981ad83e71be8b7%3A0x7799f27db25a608e!2sGwarighat%2C%20Jabalpur%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1789046647652!5m2!1sen!2sin"
+                  className={styles.mapEmbed}
+                  title="Gwarighat location"
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="strict-origin-when-cross-origin"

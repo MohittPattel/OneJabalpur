@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/config";
+import SearchBox from "./SearchBox";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -14,16 +14,7 @@ export default function Hero() {
           Find the best places, events, cafes, restaurants, businesses and
           experiences in Jabalpur, Madhya Pradesh.
         </p>
-        <form className={styles.searchBox} action="/search" method="get">
-          <input
-            name="q"
-            placeholder="Search places, cafes, events, businesses..."
-            autoComplete="off"
-          />
-          <button type="submit" className={styles.searchBtn}>
-            Search Jabalpur
-          </button>
-        </form>
+        <SearchBox />
       </div>
     </section>
   );
