@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 /**
  * Generates /sitemap.xml — the URL already referenced by public/robots.txt.
  *
- * Per ONE_JABALPUR_SEO.md §28, this must list only canonical, indexable URLs.
+ * This must list only canonical, indexable URLs.
  * Deliberately excluded: /cities, /creators, /reviews, /users, /businesses,
  * /things-to-do, /guides — those are "Coming Soon" empty states with no
  * content to index yet (§21 thin-content rule) and are marked `noindex`.
@@ -25,6 +25,8 @@ const routes = [
   { path: "/places", lastModified: "2026-09-01", changeFrequency: "weekly", priority: 0.9 },
   { path: "/events", lastModified: "2026-09-01", changeFrequency: "daily",  priority: 0.9 },
   { path: "/food",   lastModified: "2026-09-06", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/about",  lastModified: "2026-09-10", changeFrequency: "monthly", priority: 0.5 },
+  { path: "/contact", lastModified: "2026-09-10", changeFrequency: "monthly", priority: 0.5 },
 ] as const satisfies ReadonlyArray<{
   path: string;
   lastModified: string;
@@ -40,7 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route.priority,
   }));
 
-  // Place detail pages (§39: major destination pages are a top indexing priority).
+  // Place detail pages are a top indexing priority.
   const placeRoutes = places.map((place) => ({
     url: `${siteConfig.url}/places/${place.slug}`,
     lastModified: "2026-09-01",

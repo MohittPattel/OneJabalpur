@@ -11,7 +11,7 @@ export default function CardGrid() {
             <h2>Explore Jabalpur</h2>
             <p>Start with what you&apos;re looking for.</p>
           </div>
-          <a href="#" className={styles.link}>View all &rarr;</a>
+          <Link href="/places" className={styles.link}>View all &rarr;</Link>
         </div>
         <div className={styles.grid}>
           {siteConfig.sections.map((cat) => (

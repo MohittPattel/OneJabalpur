@@ -6,7 +6,6 @@ import { buildMetadata } from "@/lib/metadata";
 import {
   places,
   placeCategories,
-  getMustVisitPlaces,
   getNearbyDestinations,
 } from "@/lib/places-data";
 import styles from "./places.module.css";
@@ -19,7 +18,6 @@ export const metadata: Metadata = buildMetadata({
 });
 
 export default function PlacesPage() {
-  const mustVisit = getMustVisitPlaces();
   const featured = places.filter((p) => p.isFeatured).slice(0, 3);
   const nearby = getNearbyDestinations();
   const allPlaces = places.filter((p) => !p.category.includes("nearby"));

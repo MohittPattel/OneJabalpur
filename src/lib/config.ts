@@ -3,6 +3,7 @@ import { foodCategories } from "./food-data";
 import { businessCategories } from "./business-data";
 import { guideCategories } from "./guides-data";
 import dhuandharMain from "@/assets/Images/dhuadhar_main.jpg";
+import gwarighatMain from "@/assets/Images/gwarighat_main.jpg";
 
 type NavChild = {
   label: string;
@@ -133,10 +134,17 @@ export const siteConfig: {
     { title: "Food & Cafes",  desc: "Eat & explore",         icon: "☕", href: "/food" },
     { title: "Businesses",    desc: "Local businesses",      icon: "🏪", href: "/businesses" },
     { title: "Things To Do",  desc: "Plan your day",         icon: "🎯", href: "/things-to-do" },
-    { title: "Offers",        desc: "Local deals",           icon: "🏷️", href: "#" },
   ],
 
   featuredPlaces: [
+    {
+      title: "Gwarighat",
+      desc: "Experience the divine Narmada Aarti at Jabalpur's sacred riverside destination.",
+      badge: "Spiritual Riverside",
+      image: gwarighatMain.src,
+      meta: "🪔 Narmada Aarti · 🌊 Riverside",
+      href: "/places/gwarighat",
+    },
     {
       title: "Dhuandhar Falls",
       desc: "Experience one of Jabalpur's iconic natural attractions.",
@@ -152,14 +160,6 @@ export const siteConfig: {
       image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80",
       meta: "📍 Bhedaghat · 🧭 Experience",
       href: "/places/bhedaghat",
-    },
-    {
-      title: "Dumna Nature Park",
-      desc: "A peaceful escape for nature lovers near the city.",
-      badge: "Explore",
-      image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=80",
-      meta: "📍 Jabalpur · 🌿 Nature",
-      href: "/places/dumna-nature-reserve",
     },
   ],
 
@@ -182,13 +182,12 @@ export const siteConfig: {
     ],
     local: [
       { label: "Businesses",   href: "/businesses" },
-      { label: "Offers",       href: "#" },
       { label: "Things to Do", href: "/things-to-do" },
     ],
     about: [
-      { label: "About",               href: "#" },
-      { label: "Contact",             href: "#" },
-      { label: "List your business",  href: "#" },
+      { label: "About",               href: "/about" },
+      { label: "Contact",             href: "/contact" },
+      { label: "List your business",  href: "/businesses" },
     ],
   },
 };
