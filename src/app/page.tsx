@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import CardGrid from "@/components/CardGrid";
 import FeaturedPlaces from "@/components/FeaturedPlaces";
 import FeatureSection from "@/components/FeatureSection";
-import VisitorCounter from "@/components/VisitorCounter";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
         <CardGrid />
         <FeaturedPlaces />
         <FeatureSection />
-        <VisitorCounter />
       </main>
       <Footer />
     </>

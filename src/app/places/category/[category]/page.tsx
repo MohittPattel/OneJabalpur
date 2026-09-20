@@ -100,20 +100,12 @@ export default async function CategoryPage({ params }: PageProps) {
                 href={`/places/${place.slug}`}
                 className={styles.card}
               >
-                <div className={styles.cardImageWrap}>
-                  <img
-                    src={place.image}
-                    alt={place.title}
-                    className={styles.cardImage}
-                    loading="lazy"
-                  />
+                <div className={styles.cardBody}>
                   {place.isMustVisit && (
                     <span className={`${styles.cardBadge} ${styles.mustVisitBadge}`}>
                       ⭐ Must Visit
                     </span>
                   )}
-                </div>
-                <div className={styles.cardBody}>
                   <h3>{place.title}</h3>
                   <p>{place.shortDesc}</p>
                   <div className={styles.cardMeta}>

@@ -29,7 +29,7 @@ export default function FoodPage() {
         <div className={styles.container}>
           <div className={styles.eyebrow}>EAT &amp; EXPLORE</div>
           <h1>Food & Cafes in Jabalpur</h1>
-          <p>Discover the city through its signature sweets, cafés, restaurants, street food and neighbourhood food trails.</p>
+          <p>Discover Jabalpur through its khoya jalebi, riverfront cafés, classic eateries, street-food lanes and neighbourhood food trails across the city.</p>
         </div>
       </section>
       <main className={styles.pageContent}>
@@ -44,7 +44,7 @@ export default function FoodPage() {
           <div className={styles.eyebrow}>DISCOVER JABALPUR THROUGH FOOD</div>
           <h2 style={{ marginBottom: "12px" }}>Choose Your Food Experience</h2>
           <p style={{ color: "var(--color-text-secondary)", marginBottom: "28px" }}>
-            Browse curated guides made for visitors, from the city&apos;s signature sweets to the best areas for an evening food walk.
+            Browse practical guides for visitors and locals alike — from Jabalpur&apos;s signature sweets to the best areas for an evening food walk around Sarafa, Sadar and the riverfront.
           </p>
           <div className={styles.cards}>
             {foodSections.map((section) => (
@@ -65,7 +65,7 @@ export default function FoodPage() {
           <div className={styles.eyebrow}>A GREAT PLACE TO START</div>
           <h2 style={{ marginBottom: "12px" }}>Try Jabalpur&apos;s Signature Food</h2>
           <p style={{ color: "var(--color-text-secondary)", marginBottom: "24px" }}>
-            Begin with Khoya Jalebi, then build your day around poha for breakfast, a café break, and street food in the evening.
+            Begin with Khoya Jalebi, then plan a local day around poha for breakfast, a riverside café stop and a late-evening food walk through Jabalpur&apos;s most-loved food streets.
           </p>
           <Link href="/food/jabalpur-special" className={`${styles.filter} ${styles.active}`} style={{ display: "inline-block" }}>
             Explore Jabalpur Specialties

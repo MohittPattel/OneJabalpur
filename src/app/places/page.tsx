@@ -73,12 +73,6 @@ export default function PlacesPage() {
                 href={`/places/${featured[0].slug}`}
                 className={`${styles.featuredCard} ${styles.large}`}
               >
-                <img
-                  src={featured[0].image}
-                  alt={featured[0].title}
-                  className={styles.featuredImage}
-                />
-                <div className={styles.featuredOverlay} />
                 <div className={styles.featuredContent}>
                   <span className={styles.featuredBadge}>
                     ⭐ Must Visit
@@ -96,12 +90,6 @@ export default function PlacesPage() {
                   className={styles.featuredCard}
                   style={{ marginBottom: featured.indexOf(place) === 1 ? "20px" : 0 }}
                 >
-                  <img
-                    src={place.image}
-                    alt={place.title}
-                    className={styles.featuredImage}
-                  />
-                  <div className={styles.featuredOverlay} />
                   <div className={styles.featuredContent}>
                     <span className={styles.featuredBadge}>
                       {place.category[0] === "must-visit" ? "⭐ Must Visit" : place.tags[0]}
@@ -130,20 +118,12 @@ export default function PlacesPage() {
                 href={`/places/${place.slug}`}
                 className={styles.card}
               >
-                <div className={styles.cardImageWrap}>
-                  <img
-                    src={place.image}
-                    alt={place.title}
-                    className={styles.cardImage}
-                    loading="lazy"
-                  />
+                <div className={styles.cardBody}>
                   {place.isMustVisit && (
                     <span className={`${styles.cardBadge} ${styles.mustVisitBadge}`}>
                       ⭐ Must Visit
                     </span>
                   )}
-                </div>
-                <div className={styles.cardBody}>
                   <h3>{place.title}</h3>
                   <p>{place.shortDesc}</p>
                   <div className={styles.cardMeta}>
