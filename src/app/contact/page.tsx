@@ -32,6 +32,19 @@ export default function ContactPage() {
             <a href="mailto:hello@onejabalpur.com">hello@onejabalpur.com</a>
           </p>
         </section>
+
+        <section className={styles.emptyState}>
+          <h2>Built by MP Studio</h2>
+          <p>
+            One Jabalpur is designed and developed by MP Studio, an independent software
+            development studio building web, mobile and business products.
+          </p>
+          <p>
+            <a href="https://mohittpattel.github.io/" target="_blank" rel="noopener noreferrer">
+              Visit MP Studio &rarr;
+            </a>
+          </p>
+        </section>
       </main>
       <Footer />
     </>

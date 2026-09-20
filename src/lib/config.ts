@@ -1,7 +1,5 @@
 import { eventCategories } from "./events-data";
 import { foodCategories } from "./food-data";
-import { businessCategories } from "./business-data";
-import { guideCategories } from "./guides-data";
 import dhuandharMain from "@/assets/Images/dhuadhar_main.jpg";
 import gwarighatMain from "@/assets/Images/gwarighat_main.jpg";
 
@@ -105,41 +103,18 @@ export const siteConfig: {
         href: `/food/${cat.id}`,
       })),
     },
-    {
-      label: "Businesses",
-      href: "/businesses",
-      children: businessCategories.map((cat) => ({
-        label: cat.label,
-        href: `/businesses/${cat.id}`,
-      })),
-    },
-    {
-      label: "Guides",
-      href: "/guides",
-      children: [
-        ...guideCategories
-          .slice(0, 2)
-          .map((cat) => ({ label: cat.label, href: `/guides/${cat.id}` })),
-        { label: "Things To Do", href: "/things-to-do" },
-        ...guideCategories
-          .slice(2)
-          .map((cat) => ({ label: cat.label, href: `/guides/${cat.id}` })),
-      ],
-    },
   ],
 
   sections: [
-    { title: "Places",        desc: "Discover attractions",  icon: "📍", href: "/places" },
-    { title: "Events",        desc: "What's happening",      icon: "🎉", href: "/events" },
-    { title: "Food & Cafes",  desc: "Eat & explore",         icon: "☕", href: "/food" },
-    { title: "Businesses",    desc: "Local businesses",      icon: "🏪", href: "/businesses" },
-    { title: "Things To Do",  desc: "Plan your day",         icon: "🎯", href: "/things-to-do" },
+    { title: "Places",       desc: "Discover Jabalpur's top attractions", icon: "📍", href: "/places" },
+    { title: "Events",       desc: "What's happening in the city",       icon: "🎉", href: "/events" },
+    { title: "Food & Cafes", desc: "Eat, drink and explore locally",      icon: "☕", href: "/food" },
   ],
 
   featuredPlaces: [
     {
       title: "Gwarighat",
-      desc: "Experience the divine Narmada Aarti at Jabalpur's sacred riverside destination.",
+      desc: "Jabalpur's sacred riverfront, known for the Narmada Aarti and evening river views.",
       badge: "Spiritual Riverside",
       image: gwarighatMain.src,
       meta: "🪔 Narmada Aarti · 🌊 Riverside",
@@ -147,7 +122,7 @@ export const siteConfig: {
     },
     {
       title: "Dhuandhar Falls",
-      desc: "Experience one of Jabalpur's iconic natural attractions.",
+      desc: "One of Jabalpur's most iconic waterfalls, set against the gorge and Narmada landscape.",
       badge: "Must Visit",
       image: dhuandharMain.src,
       meta: "📍 Bhedaghat · ⭐ Popular",
@@ -155,10 +130,10 @@ export const siteConfig: {
     },
     {
       title: "Marble Rocks",
-      desc: "Explore the dramatic marble cliffs and Narmada landscape.",
+      desc: "A dramatic stretch of marble cliffs on the Narmada, famous for boat rides and scenic views.",
       badge: "Nature",
       image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80",
-      meta: "📍 Bhedaghat · 🧭 Experience",
+      meta: "📍 Bhedaghat · 🧭 Scenic",
       href: "/places/bhedaghat",
     },
   ],
@@ -181,13 +156,12 @@ export const siteConfig: {
       { label: "Food & Cafes", href: "/food" },
     ],
     local: [
-      { label: "Businesses",   href: "/businesses" },
-      { label: "Things to Do", href: "/things-to-do" },
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
     ],
     about: [
-      { label: "About",               href: "/about" },
-      { label: "Contact",             href: "/contact" },
-      { label: "List your business",  href: "/businesses" },
+      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
     ],
   },
 };

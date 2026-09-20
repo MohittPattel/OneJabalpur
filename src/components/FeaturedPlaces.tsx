@@ -15,20 +15,14 @@ export default function FeaturedPlaces() {
         </div>
         <div className={styles.cards}>
           {siteConfig.featuredPlaces.map((place) => (
-              <Link key={place.title} href={place.href} className={styles.card}>
-                <img
-                  src={place.image}
-                  alt={place.title}
-                  className={styles.image}
-                  loading="lazy"
-                />
-                <div className={styles.body}>
-                  <span className={styles.badge}>{place.badge}</span>
-                  <h3>{place.title}</h3>
-                  <p>{place.desc}</p>
-                  <div className={styles.meta}>{place.meta}</div>
-                </div>
-              </Link>
+            <Link key={place.title} href={place.href} className={styles.card}>
+              <div className={styles.body}>
+                <span className={styles.badge}>{place.badge}</span>
+                <h3>{place.title}</h3>
+                <p>{place.desc}</p>
+                <div className={styles.meta}>{place.meta}</div>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

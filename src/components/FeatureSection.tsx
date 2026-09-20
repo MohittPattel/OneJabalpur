@@ -11,8 +11,9 @@ export default function FeatureSection() {
             <div className={styles.eyebrow}>One city. One guide.</div>
             <h2>Know what&apos;s happening in Jabalpur.</h2>
             <p>
-              From weekend events and new cafes to hidden places and local
-              businesses — discover the city through One Jabalpur.
+              From the riverfront at Gwarighat to heritage forts, Narmada-side
+              walks and the city&apos;s best food spots — discover Jabalpur through
+              local context, real places and useful recommendations.
             </p>
             <Link href="/events" className={styles.btn}>
               Explore events &rarr;

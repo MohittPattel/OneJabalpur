@@ -11,8 +11,8 @@ export default function Hero() {
           in one place.
         </h1>
         <p>
-          Find the best places, events, cafes, restaurants, businesses and
-          experiences in Jabalpur, Madhya Pradesh.
+          Explore Jabalpur through its Narmada ghats, heritage forts, waterfalls,
+          cafés, local food trails and weekend experiences across the city.
         </p>
         <SearchBox />
       </div>

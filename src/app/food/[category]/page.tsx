@@ -88,7 +88,6 @@ export default async function FoodCategoryPage({ params }: PageProps) {
           <div className={styles.cards}>
             {restaurants.map((restaurant) => (
               <article key={restaurant.title} className={styles.card}>
-                <img src={restaurant.image} alt={restaurant.title} className={styles.cardImage} loading="lazy" />
                 <div className={styles.cardBody}>
                   <span className={styles.badge}>{restaurant.badge}</span>
                   <h3>{restaurant.title}</h3>
@@ -119,7 +118,6 @@ export default async function FoodCategoryPage({ params }: PageProps) {
           <div className={styles.cards}>
             {jabalpurSpecials.map((special) => (
               <article key={special.title} className={styles.card}>
-                <img src={special.image} alt={special.title} className={styles.cardImage} loading="lazy" />
                 <div className={styles.cardBody}>
                   <span className={styles.badge}>{special.badge}</span>
                   <h3>{special.title}</h3>
@@ -150,7 +148,6 @@ export default async function FoodCategoryPage({ params }: PageProps) {
           <div className={styles.cards}>
             {streetFoodPlaces.map((place) => (
               <article key={place.title} className={styles.card}>
-                <img src={place.image} alt={place.title} className={styles.cardImage} loading="lazy" />
                 <div className={styles.cardBody}>
                   <span className={styles.badge}>{place.badge}</span>
                   <h3>{place.title}</h3>
@@ -181,7 +178,6 @@ export default async function FoodCategoryPage({ params }: PageProps) {
           <div className={styles.cards}>
             {cafes.map((cafe) => (
               <article key={cafe.title} className={styles.card}>
-                <img src={cafe.image} alt={cafe.title} className={styles.cardImage} loading="lazy" />
                 <div className={styles.cardBody}>
                   <span className={styles.badge}>{cafe.badge}</span>
                   <h3>{cafe.title}</h3>
@@ -212,7 +208,6 @@ export default async function FoodCategoryPage({ params }: PageProps) {
           <div className={styles.cards}>
             {jabalpurSweets.map((sweet) => (
               <article key={sweet.title} className={styles.card}>
-                <img src={sweet.image} alt={sweet.title} className={styles.cardImage} loading="lazy" />
                 <div className={styles.cardBody}>
                   <span className={styles.badge}>{sweet.badge}</span>
                   <h3>{sweet.title}</h3>

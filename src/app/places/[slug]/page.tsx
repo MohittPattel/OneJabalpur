@@ -73,12 +73,6 @@ export default async function PlacePage({ params }: PageProps) {
 
       {/* Hero Section */}
       <section className={styles.hero}>
-        <img
-          src={place.image}
-          alt={place.title}
-          className={styles.heroImage}
-        />
-        <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
           <div className={styles.breadcrumb}>
             <Link href="/places">Places</Link>
@@ -125,23 +119,9 @@ export default async function PlacePage({ params }: PageProps) {
             <section className={styles.section}>
               <h2>Photos</h2>
               <div className={styles.photoGrid}>
-                {(photos.length > 0 ? photos : [place.image]).map((photo, index) => (
-                  <div key={photo} className={styles.photoPlaceholder}>
-                    <a
-                      href={photo}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`Open ${place.title} photo ${index + 1}`}
-                    >
-                      <img src={photo} alt={`${place.title} photo ${index + 1}`} />
-                    </a>
-                  </div>
-                ))}
-                {Array.from({ length: Math.max(0, 3 - (photos.length || 1)) }).map((_, index) => (
-                  <div key={`placeholder-${index}`} className={styles.photoPlaceholder}>
-                    <div className={styles.comingSoon}>More photos coming soon</div>
-                  </div>
-                ))}
+                <div className={styles.photoPlaceholder}>
+                  <div className={styles.comingSoon}>Photos coming soon</div>
+                </div>
               </div>
               {place.slug === "dhuandhar-falls" && (
                 <a
@@ -262,7 +242,6 @@ export default async function PlacePage({ params }: PageProps) {
                   href={`/places/${p.slug}`}
                   className={styles.relatedCard}
                 >
-                  <img src={p.image} alt={p.title} />
                   <div className={styles.relatedContent}>
                     <h3>{p.title}</h3>
                     <p>{p.shortDesc}</p>
